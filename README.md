@@ -62,6 +62,22 @@ CloudWatch: log group with 14-day retention plus an alarm on Lambda errors
 
 ## Deploy with SAM
 
+**Live deployment** (eu-central-1, Lambda + API Gateway, deployed with the
+commands below):
+
+```
+https://gr0hz97g21.execute-api.eu-central-1.amazonaws.com/Prod/assistant
+```
+
+```bash
+curl -X POST https://gr0hz97g21.execute-api.eu-central-1.amazonaws.com/Prod/assistant \
+  -H "Content-Type: application/json" \
+  -d '{"question": "What documents do I need for residence registration?"}'
+# -> {"type": "answer", ..., "source": {"doc_id": "sample-residence-registration-guide", "section_id": "required-documents"}}
+```
+
+To deploy your own copy:
+
 ```bash
 sam build
 sam deploy --guided
