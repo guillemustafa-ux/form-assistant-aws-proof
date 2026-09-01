@@ -1,0 +1,63 @@
+{
+  "form_id": "sample-residence-registration",
+  "title": "Sample Residence Registration",
+  "fields": [
+    {
+      "id": "full_name",
+      "prompt": "What is your full name?",
+      "sensitive": "name",
+      "validation": {
+        "pattern": "\\S+(\\s+\\S+)+",
+        "message": "please enter your first and last name"
+      }
+    },
+    {
+      "id": "national_id",
+      "prompt": "What is your identity document number? (two letters, six digits)",
+      "sensitive": "id",
+      "validation": {
+        "pattern": "[A-Z]{2}[0-9]{6}",
+        "message": "the document number must be two uppercase letters followed by six digits"
+      }
+    },
+    {
+      "id": "birth_date",
+      "prompt": "What is your date of birth? (YYYY-MM-DD)",
+      "sensitive": "birthdate",
+      "validation": {
+        "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}",
+        "message": "please use the format YYYY-MM-DD"
+      }
+    },
+    {
+      "id": "address",
+      "prompt": "What is your new address?",
+      "sensitive": "address",
+      "validation": {
+        "pattern": ".{5,}",
+        "message": "please enter a full street address"
+      }
+    },
+    {
+      "id": "moving_with_family",
+      "prompt": "Are family members moving in with you? (yes/no)",
+      "validation": {
+        "pattern": "yes|no",
+        "message": "please answer yes or no"
+      },
+      "follow_up": {
+        "if_equals": "yes",
+        "fields": [
+          {
+            "id": "family_members",
+            "prompt": "How many family members are moving in with you?",
+            "validation": {
+              "pattern": "[0-9]+",
+              "message": "please enter a number"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

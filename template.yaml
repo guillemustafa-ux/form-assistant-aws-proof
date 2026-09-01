@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Form assistant proof - Lambda + API Gateway + error alarm + log retention.
+
+Globals:
+  Function:
+    Runtime: python3.11
+    Timeout: 30
+    MemorySize: 256
+
+Resources:
+  AssistantFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: form-assistant-proof
+      CodeUri: src/
+      Handler: form_assistant.app.lambda_handler
+      Events:
+        Ask:
+          Type: Api
+          Properties:
+            Path: /assistant
+            Method: post
+
+  AssistantLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: /aws/lambda/form-assistant-proof
+      RetentionInDays: 14
+
+  AssistantErrorAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmDescription: Errors on the form assistant Lambda function
+      Namespace: AWS/Lambda
+      MetricName: Errors
+      Dimensions:
+        - Name: FunctionName
+          Value: !Ref AssistantFunction
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
+
+Outputs:
+  ApiUrl:
+    Description: Invoke URL for the assistant endpoint
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/assistant"

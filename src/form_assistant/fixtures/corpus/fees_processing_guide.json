@@ -1,0 +1,16 @@
+{
+  "doc_id": "sample-fees-processing-guide",
+  "title": "Sample Fees and Processing Guidance (invented demo content)",
+  "sections": [
+    {
+      "section_id": "fees",
+      "heading": "Fees",
+      "text": "The residence registration itself is free of charge. A printed certificate copy costs a small administrative fee, payable at the desk by card."
+    },
+    {
+      "section_id": "processing-time",
+      "heading": "Processing time",
+      "text": "Processing usually takes two to five working days after the appointment. The confirmation certificate is handed out immediately in most standard cases."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "doc_id": "sample-residence-registration-guide",
+  "title": "Sample Residence Registration Guidance (invented demo content)",
+  "sections": [
+    {
+      "section_id": "deadlines",
+      "heading": "Registration deadline",
+      "text": "You must complete the residence registration within 14 days of moving into the new home. A late registration may lead to an administrative reminder, so book your slot early."
+    },
+    {
+      "section_id": "required-documents",
+      "heading": "Required documents",
+      "text": "For the registration you need a valid identity document and a signed confirmation letter from the property owner. Applicants moving with family members also need one identity document per person."
+    },
+    {
+      "section_id": "appointment",
+      "heading": "Booking an appointment",
+      "text": "Appointments for the registration desk are booked online through the sample citizen portal. Walk-in slots exist but are limited to urgent cases."
+    }
+  ]
+}

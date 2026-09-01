@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "form-assistant-proof"
+version = "0.1.0"
+description = "Spec-driven form assistant proof: dialogue runtime, traceable retrieval, PII masking boundary"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+anthropic = ["anthropic>=1.0,<2"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+form_assistant = ["fixtures/*.json", "fixtures/corpus/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
